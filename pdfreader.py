@@ -16,6 +16,8 @@ print(a)
 x=1
 c=1
 
+#Reads the PDF
+
 def read(page):
 
     page_content= pdfReader.getPage(int(page))
@@ -29,7 +31,7 @@ def read(page):
     engine.runAndWait()
     engine.stop()
 
-# It all Starts from here
+# The main code
 while(x):
     page = input("Enter the page number to read :")
     
