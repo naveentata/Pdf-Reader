@@ -1,7 +1,9 @@
+# import the modules
 import sys
 import pyttsx3
 import PyPDF2
 
+# setting the path
 path = sys.argv[1]
 
 #files = open(path,'r')
@@ -9,6 +11,7 @@ path = sys.argv[1]
 #matter = files.read()
 #print (matter)
 
+# open the file to read
 pdfFileObj = open(path, 'rb')
 pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
 a=pdfReader.numPages
@@ -33,10 +36,11 @@ def read(page):
 
 # The main code
 while(x):
+    # go to specific page
     page = input("Enter the page number to read :")
     
     read(page)
-    c=int(input("Do you want to continue? (1)Yess (2)No"))
+    c=int(input("Do you want to continue? (1)Yes (2)No"))
     if(c==2):
         x=0
         print("Thank you")
