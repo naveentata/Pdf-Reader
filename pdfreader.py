@@ -16,23 +16,26 @@ print(a)
 x=1  # Flag for loop continuation
 c=1  # User's choice for continuing program 1=Yes, 2=No
 
-# Reads out the specified page of the pdf
 def read(page):
-
-    page_content= pdfReader.getPage(int(page))  # Page object of page to be read
-    b = page_content.extractText()  # Generating a unicode string of text on the page
-    print(b)
-    engine = pyttsx3.init()  # Defining text to speech engine
+    """Reads out the specified 
+    page of the pdf
+    """
     
-    #Setting speech rate to 150 words per minute
+    page_content= pdfReader.getPage(int(page))  # Page object of page to be read
+    b = page_content.extractText()  # Generating a string of text on the page
+    print(b)
+    
+    engine = pyttsx3.init()  # Text to speech engine
+    
+    # Setting speech rate to 150 words per minute
     rate = engine.getProperty('rate') 
     engine.setProperty('rate', rate-50)
     
-    #Reading out text
+    # Reading out text
     engine.say(b)
     engine.say("Page number "+str(page)+" is completed")
     
-    #Wait until all text has been read out and stops the engine
+    # Wait until all text has been read out and stops the engine
     engine.runAndWait()
     engine.stop()
 
