@@ -1,42 +1,59 @@
+#Python3.x
+#Installs necessary modules
 import sys
 import pyttsx3
 import PyPDF2
 
 path = sys.argv[1]
 
-#files = open(path,'r')
-
-#matter = files.read()
-#print (matter)
-
+#Opens the file in read mode
 pdfFileObj = open(path, 'rb')
+
+#Using PyPDF2 to read the PDF
 pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
 a=pdfReader.numPages
 print(a)
 x=1
 c=1
 
-#Reads the PDF
-
+#Function Definition
+#Reads specific pages from the PDF
 def read(page):
+	
 
     page_content= pdfReader.getPage(int(page))
+    
+    #Generates a string of texton the page
     b = page_content.extractText()
     print(b)
+
+    # Text to Speech Engine
     engine = pyttsx3.init()
+
+    # Setting the speech rate
     rate = engine.getProperty('rate')
     engine.setProperty('rate', rate-50)
     engine.say(b)
     engine.say("Page number "+str(page)+" is completed")
+    
+    # Waits until all the text has been read out 
     engine.runAndWait()
+
+    #Stops the engine
     engine.stop()
 
-# The main code
+#Main code - Executed First
 while(x):
+	
+	# Reads input from user
     page = input("Enter the page number to read :")
-    
+
+    #Function call
     read(page)
-    c=int(input("Do you want to continue? (1)Yess (2)No"))
+
+    # Reads input from user and converts to type: integer 
+    c=int(input("Do you want to continue? (1)Yes (2)No"))
+
     if(c==2):
         x=0
         print("Thank you")
