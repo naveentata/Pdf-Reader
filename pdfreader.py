@@ -42,6 +42,8 @@ def read(page):
 
 
 # The main code
+x=int(input("Do you want to read pdf?\n (1)YES\n (2)NO\n"))
+
 while (x):
     page = input("Enter the page number to read :")
 
